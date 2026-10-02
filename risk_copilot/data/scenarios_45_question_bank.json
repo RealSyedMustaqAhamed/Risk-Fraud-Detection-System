@@ -1,0 +1,300 @@
+{
+  "title": "Risk, Fraud, and Regulatory Intelligence Copilot - 45 Scenario Question Bank",
+  "wow_scenario": {
+    "question": "Why should I file a SAR for customer CUST-9821?",
+    "tier": "Ultimate WOW Demo Scenario",
+    "description": "Demonstrates full end-to-end Signal → Evidence → Regulatory Basis → 1-Click SAR Filing & Jira Integration.",
+    "expected_output": {
+      "finding": "Customer CUST-9821 triggered a high-risk AML structuring alert.",
+      "risk_indicators": [
+        "17 cash deposits",
+        "Each between $9,100 and $9,900 (INR 9.1L - 9.9L)",
+        "Across 5 distinct branches",
+        "Total value: $162,000 / INR ~1.34 Cr"
+      ],
+      "regulatory_basis": "FinCEN AML Structuring Guidance Section 3.1 & PMLA Section 12",
+      "supporting_evidence": [
+        "Transaction IDs: TXS-9821-01 to TXS-9821-17",
+        "Branch Locations: South Mumbai, Andheri West, Bandra East, Fort Main, BKC Plaza",
+        "Timeline Analysis: 2026-09-27 to 2026-09-28"
+      ],
+      "recommendation": "File SAR / Freeze Account",
+      "confidence": "96%"
+    }
+  },
+  "tiers": [
+    {
+      "tier": "Tier 1: Real-Time Fraud Detection Questions",
+      "description": "Instant payment telemetry, velocity spikes, device switches, and newly opened accounts.",
+      "questions": [
+        {
+          "id": 1,
+          "question": "What are the highest-risk transactions from the last 15 minutes?",
+          "expected_output": "Transaction IDs, Risk scores, Fraud indicators, and supporting evidence."
+        },
+        {
+          "id": 2,
+          "question": "Which customers show structuring behavior today?",
+          "expected_output": "Customers making multiple deposits just below reporting thresholds ($10,000 / INR 10L) within short intervals."
+        },
+        {
+          "id": 3,
+          "question": "Show accounts whose transaction velocity is 5x above their normal behavior.",
+          "expected_output": "Accounts with sudden volume/frequency bursts compared to historical baseline."
+        },
+        {
+          "id": 4,
+          "question": "Which transactions deviate significantly from the customer's historical pattern?",
+          "expected_output": "High-value transactions by dormant or low-income profiles."
+        },
+        {
+          "id": 5,
+          "question": "Identify newly opened accounts involved in large fund transfers.",
+          "expected_output": "Accounts under 180 days old moving large credit/debit tranches."
+        },
+        {
+          "id": 6,
+          "question": "Which transactions originated from unusual geographies or devices?",
+          "expected_output": "Transactions from foreign IP ranges (185.x.x.x, AE) or multiple device switches."
+        },
+        {
+          "id": 7,
+          "question": "Show linked accounts participating in potential fraud rings.",
+          "expected_output": "Accounts connected through shared device IDs or circular transaction loops."
+        },
+        {
+          "id": 8,
+          "question": "Which customers trigger multiple fraud rules simultaneously?",
+          "expected_output": "Accounts triggering 3+ simultaneous red flags (e.g. Mule + Watchlist + Pass-Through)."
+        }
+      ]
+    },
+    {
+      "tier": "Tier 2: AML (Anti-Money Laundering) Questions",
+      "description": "Suspicious activity detection, smurfing, layering, and sanctions compliance.",
+      "questions": [
+        {
+          "id": 9,
+          "question": "Which customers should be reviewed for Suspicious Activity Reports (SAR)?",
+          "expected_output": "List of alerts in PENDING_REVIEW status with Risk Score >= 60."
+        },
+        {
+          "id": 10,
+          "question": "Why was Customer A flagged for AML review?",
+          "expected_output": "Itemized breakdown: 17 cash deposits, $9,100-$9,900 each, across 5 branches, total $162k, FinCEN Structuring Rule."
+        },
+        {
+          "id": 11,
+          "question": "Show all layering patterns detected this week.",
+          "expected_output": "Circular round-trip cycles and rapid pass-through transfers."
+        },
+        {
+          "id": 12,
+          "question": "Which transactions exhibit money mule characteristics?",
+          "expected_output": "Dormant accounts receiving bursts of small credits followed by swift RTGS outflows."
+        },
+        {
+          "id": 13,
+          "question": "Identify accounts connected to sanctioned entities.",
+          "expected_output": "Customers with match score >= 0.85 against OFAC SDN or UN Consolidated lists."
+        },
+        {
+          "id": 14,
+          "question": "Which alerts have enough evidence to file a SAR?",
+          "expected_output": "High-confidence alerts with verified transactions and policy mappings."
+        }
+      ]
+    },
+    {
+      "tier": "Tier 3: Explainability Questions",
+      "description": "Transparent AI reasoning mapping raw flags to specific policy and regulatory clauses.",
+      "questions": [
+        {
+          "id": 15,
+          "question": "Explain why Transaction TXN-12345 was flagged.",
+          "expected_output": "Fraud score, contributing factors with weights (+20 New Device, +25 High Amount), and policy links."
+        },
+        {
+          "id": 16,
+          "question": "Show all evidence supporting this fraud alert.",
+          "expected_output": "Full transaction trail, counterparty details, device hashes, and timestamps."
+        },
+        {
+          "id": 17,
+          "question": "Which regulations apply to this transaction?",
+          "expected_output": "PMLA Section 12, RBI KYC MD, FinCEN 31 CFR § 1010.314, or Basel III LCR."
+        },
+        {
+          "id": 18,
+          "question": "What policy violations have occurred?",
+          "expected_output": "Internal policy breaches: AML-POL 4.2 (Mule), 4.3 (Structuring), 4.4 (Round-Tripping)."
+        },
+        {
+          "id": 19,
+          "question": "Why is this transaction considered suspicious under AML regulations?",
+          "expected_output": "Legalistic explanation of economic inconsistency, threshold avoidance, and lack of commercial rationale."
+        }
+      ]
+    },
+    {
+      "tier": "Tier 4: Network and Fraud Ring Analysis",
+      "description": "Graph link analysis, shared infrastructure, and circular transaction flows.",
+      "questions": [
+        {
+          "id": 20,
+          "question": "Show the network of accounts connected to Customer CUST000371.",
+          "expected_output": "Counterparty nodes, shared device nodes, and transaction volume edge weights."
+        },
+        {
+          "id": 21,
+          "question": "Identify possible fraud rings operating this week.",
+          "expected_output": "Clustered groups sharing DEV90000-DEV90005 devices or 3-hop circular fund flows."
+        },
+        {
+          "id": 22,
+          "question": "Which customers share devices, addresses, IPs, or phone numbers with known fraudsters?",
+          "expected_output": "List of accounts accessing banking channels via blacklisted device IDs or risky IPs."
+        },
+        {
+          "id": 23,
+          "question": "Visualize transactional relationships around this suspicious account.",
+          "expected_output": "Visual / tabular node-edge representation of inward fund aggregators and outward beneficiaries."
+        },
+        {
+          "id": 24,
+          "question": "Find hidden connections between flagged transactions.",
+          "expected_output": "Shared external beneficiary accounts (e.g. EXT-BENF-003) across distinct customer IDs."
+        }
+      ]
+    },
+    {
+      "tier": "Tier 5: Credit Risk Questions",
+      "description": "Early Warning Systems (EWS), SMA classification, and IFRS 9 staging.",
+      "questions": [
+        {
+          "id": 25,
+          "question": "Which borrowers have experienced rapid credit deterioration?",
+          "expected_output": "Borrowers sliding from STANDARD to SMA-1/SMA-2 with NACH bounces."
+        },
+        {
+          "id": 26,
+          "question": "Show customers whose repayment behavior changed significantly.",
+          "expected_output": "Accounts with 2+ NACH bounces in 90 days and 30%+ drop in sales velocity."
+        },
+        {
+          "id": 27,
+          "question": "Which accounts are likely to default within the next 30 days?",
+          "expected_output": "SMA-2 accounts with high limit utilization (>90%) and low bureau scores."
+        },
+        {
+          "id": 28,
+          "question": "Explain why this borrower received a high-risk rating.",
+          "expected_output": "DPD status, trigger counts, limit utilization %, and credit policy basis (CR-POL 5.3)."
+        },
+        {
+          "id": 29,
+          "question": "Which loans require immediate review?",
+          "expected_output": "Loans triggering 'RESTRUCTURING_DISCUSSION_CREDIT_COMMITTEE' action."
+        }
+      ]
+    },
+    {
+      "tier": "Tier 6: Liquidity & Basel Reporting",
+      "description": "HQLA tracking, LCR/NSFR forecasting, structural liquidity gaps, and stress scenarios.",
+      "questions": [
+        {
+          "id": 30,
+          "question": "Is today's Liquidity Coverage Ratio within Basel requirements?",
+          "expected_output": "Current LCR (113.9%), minimum requirement (100%), and internal buffer status (Amber, <115%)."
+        },
+        {
+          "id": 31,
+          "question": "Explain the factors causing today's LCR decline.",
+          "expected_output": "Breakdown of non-operational wholesale run-offs and Level 2A HQLA caps."
+        },
+        {
+          "id": 32,
+          "question": "Which assets contribute most to liquidity stress?",
+          "expected_output": "Level 2B equities and unsecured wholesale deposits with high run-off factors."
+        },
+        {
+          "id": 33,
+          "question": "Generate today's Basel III compliance summary.",
+          "expected_output": "HQLA stock by Level 1/2A/2B, net 30-day cash outflows, and compliance status."
+        },
+        {
+          "id": 34,
+          "question": "Show funding concentration risks.",
+          "expected_output": "Maturity bucket analysis (1-7D, 8-14D, 15-30D) and wholesale deposit shares."
+        }
+      ]
+    },
+    {
+      "tier": "Tier 7: Audit and Compliance Questions",
+      "description": "Audit-ready evidence packages, regulatory documentation, and maker-checker logs.",
+      "questions": [
+        {
+          "id": 35,
+          "question": "Generate an audit-ready explanation for Alert #ALR-ACC0000524.",
+          "expected_output": "Complete narrative with cited policy sections, transaction timestamps, and action trail."
+        },
+        {
+          "id": 36,
+          "question": "Produce regulator-ready documentation for Customer CUST-9821.",
+          "expected_output": "Governed STR package detailing 17 cash deposits and FinCEN / PMLA references."
+        },
+        {
+          "id": 37,
+          "question": "Show the complete evidence trail for this alert.",
+          "expected_output": "JSON/tabular representation of signal computation, policy preview, and LLM guardrail check."
+        },
+        {
+          "id": 38,
+          "question": "Which source documents support this compliance finding?",
+          "expected_output": "Citations of internal AML/CFT policy versions and regulatory gazette summaries."
+        },
+        {
+          "id": 39,
+          "question": "Generate a case summary for investigator review.",
+          "expected_output": "Case ID, maker ID, guardrail pass status, missing documentation list, and decision prompt."
+        },
+        {
+          "id": 40,
+          "question": "Create a documented finding with citations.",
+          "expected_output": "Official markdown dossier formatted with WHO, WHAT, WHEN, WHERE, WHY, HOW sections."
+        }
+      ]
+    },
+    {
+      "tier": "Tier 8: Executive Dashboard Questions",
+      "description": "C-suite overview of fraud exposure, credit portfolio health, and regulatory risk posture.",
+      "questions": [
+        {
+          "id": 41,
+          "question": "What were today's top fraud trends?",
+          "expected_output": "Typology breakdown: Money Mule bursts (12), Cash Structuring (7), Round-tripping (6)."
+        },
+        {
+          "id": 42,
+          "question": "Show fraud exposure by business unit.",
+          "expected_output": "Exposure across Individual, MSME, and Corporate banking segments."
+        },
+        {
+          "id": 43,
+          "question": "Which fraud typologies are increasing this month?",
+          "expected_output": "Trend comparison showing recent surge in fast-pass-through mule accounts."
+        },
+        {
+          "id": 44,
+          "question": "What is the estimated financial impact of today's suspicious activity?",
+          "expected_output": "Total 48-hour outflow at risk (INR 2.8+ Cr) and frozen account balances."
+        },
+        {
+          "id": 45,
+          "question": "How many alerts require immediate investigation?",
+          "expected_output": "Count of critical freeze alerts and pending STR submissions."
+        }
+      ]
+    }
+  ]
+}
