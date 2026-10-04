@@ -10,3 +10,6 @@ dependencies = [
 
 [tool.uv]
 constraint-dependencies = ["numba>=0.56.0"]
+
+[tool.poetry]
+package-mode = false

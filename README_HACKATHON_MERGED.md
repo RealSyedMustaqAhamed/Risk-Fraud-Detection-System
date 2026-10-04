@@ -69,6 +69,10 @@ Set Snowflake environment variables, then configure the MCP server using `mcp/co
 
 For production, prefer SSO/key-pair/OAuth instead of storing a password.
 
+## Streamlit Community Cloud
+
+Deploy `risk_copilot_app/streamlit_app.py` from the `main` branch with Python 3.11. Keep the app private and add the Snowflake connection under the app's Community Cloud secrets as `[connections.snowflake]`. Grant only the app role the minimum database privileges needed.
+
 ## Demo input
 
 Use the existing fraud engine plus a small suspicious sequence:
