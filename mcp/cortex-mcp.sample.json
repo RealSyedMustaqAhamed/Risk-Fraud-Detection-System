@@ -1,0 +1,19 @@
+{
+  "mcpServers": {
+    "risk-copilot-actions": {
+      "command": "python",
+      "args": [
+        "mcp/risk_mcp/server.py"
+      ],
+      "env": {
+        "SNOWFLAKE_ACCOUNT": "YOUR_ACCOUNT",
+        "SNOWFLAKE_USER": "YOUR_USER",
+        "SNOWFLAKE_PASSWORD": "YOUR_PASSWORD",
+        "SNOWFLAKE_ROLE": "YOUR_ROLE",
+        "SNOWFLAKE_WAREHOUSE": "COMPUTE_WH",
+        "SNOWFLAKE_DATABASE": "RISK_COPILOT",
+        "SNOWFLAKE_SCHEMA": "EVIDENCE"
+      }
+    }
+  }
+}
